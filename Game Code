@@ -1,0 +1,46 @@
+package numberguessinggame;
+
+import java.util.Random;
+import javax.swing.JOptionPane;
+
+public class NumberGuessingGame {
+
+    // Play the Game
+    public static void main(String[] args) {
+        int answer = computerNumber();
+        int guess = getNumber();
+        int counter = 1;
+        boolean correct = false;
+
+        do {
+            if (guess < answer) {
+                JOptionPane.showMessageDialog(null, "Too Low!");
+                guess = getNumber();
+                counter++;
+            } else if (guess > answer) {
+                JOptionPane.showMessageDialog(null, "Too High!");
+                guess = getNumber();
+                counter++;
+            } else {
+                JOptionPane.showMessageDialog(null, "Correct! \n It took you " + counter + " guesses!");
+                correct = true;
+            }
+        } while (!correct);
+
+        System.exit(0);
+    }
+
+    // Guess User Number Guess
+    public static int getNumber() {
+        String guessStr = JOptionPane.showInputDialog("Guess a number");
+        return Integer.parseInt(guessStr);
+
+    }
+
+    // Generate a random number between 1 and 100
+    public static int computerNumber() {
+        Random randomNumber = new Random();
+        return randomNumber.nextInt(101);
+    }
+
+}
