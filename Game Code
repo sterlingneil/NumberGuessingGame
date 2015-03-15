@@ -42,5 +42,4 @@ public class NumberGuessingGame {
         Random randomNumber = new Random();
         return randomNumber.nextInt(101);
     }
-
 }
